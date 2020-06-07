@@ -1,0 +1,19 @@
+{
+    "name" : "Purple Rain",
+    "index" : 1500,
+    "show-in-gui" : true,
+
+    "colors" : {
+        "background" :         "#ffffff",
+        "axes-color" :         "#323232",
+        "opencsg-face-front" : "#C114F8",
+        "opencsg-face-back" :  "#C114F8",
+        "cgal-face-front" :    "#C114F8",
+        "cgal-face-back" :     "#C114F8",
+        "cgal-face-2d" :       "#C114F8",
+        "cgal-edge-front" :    "#f8c114",
+        "cgal-edge-back" :     "#f8c114",
+        "cgal-edge-2d" :       "#f8c114",
+        "crosshair" :          "#111111"
+    }
+}

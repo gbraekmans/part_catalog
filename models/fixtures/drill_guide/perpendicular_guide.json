@@ -1,0 +1,13 @@
+{
+    "parameterSets": {
+        "M3": {
+            "BORE_DIAMETER": "3",
+            "HEX_HEIGHT": "2.6",
+            "HEX_WRENCH_SIZE": "5.5",
+            "SIDE_LENGTH": "25"
+        }
+    },
+    "fileFormatVersion": "1",
+    "parameterSets": "",
+    "parameterSets": ""
+}
