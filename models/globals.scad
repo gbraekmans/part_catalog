@@ -10,18 +10,15 @@ Y = 1;
 Z = 2;
 
 // Slicer defaults
-LAYER_HEIGHT = 0.15;
-EXTRUSION_WIDTH = 0.45;
-
-function nearest_layer_height(n) = round(n / LAYER_HEIGHT) * LAYER_HEIGHT;
-function nearest_extrusion_width(n) = round(n / EXTRUSION_WIDTH) * EXTRUSION_WIDTH;
+LAYER_HEIGHT = 0.2;
+EXTRUSION_WIDTH = 0.5;
 
 // Defaults for all parts
-WALL_XS = nearest_extrusion_width(1.25);
-WALL_S = nearest_extrusion_width(2);
-WALL = nearest_extrusion_width(3);
-WALL_L = nearest_extrusion_width(5);
-WALL_XL = nearest_extrusion_width(7.5);
+WALL_XS = 1;
+WALL_S = 2;
+WALL = 3;
+WALL_L = 5;
+WALL_XL = 7.5;
 
 // Seems to be a good middle ground, corresponds to #8 for imperial ones
 SCREW = 4;
