@@ -47,12 +47,13 @@ module h_engrave(t, size=10) {
 // Used for creating screw holes
 module screw(height, head_extra_height=0) {
     translate([0,0, -(height + head_extra_height) / 2]) {
-        cylinder(height, r=SCREW/2);
+        cylinder(height + 2*EPS, r=SCREW/2);
         
-        translate([0,0,height-SCREW/2])
-        cylinder(SCREW/2, r1=SCREW/2, r2=SCREW);
+        // Add some extra radius to account for hole shrinkage
+        translate([0,0,height-SCREW/2 + 2*EPS])
+        cylinder(SCREW/2, r1=SCREW/2, r2=SCREW + 0.5);
         
-        translate([0,0,height - EPS])
-        cylinder(head_extra_height + EPS, r=SCREW);
+        translate([0,0,height])
+        cylinder(head_extra_height + EPS, r=SCREW + 0.5);
     }
 }
