@@ -18,10 +18,10 @@ module screwed_spacer(width, height, length=50) {
         square([length, width], center=true);
 
         translate([-length/4, 0])
-        screw(height + 2*EPS);
+        screw(height, height / 2);
 
         translate([length/4, 0])
-        screw(height + 2*EPS);
+        #screw(height, height / 2);
     }
     
     translate([length/2 -r, 0])
