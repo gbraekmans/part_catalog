@@ -1,8 +1,6 @@
 include <../../globals.scad>;
 use <../../dim.scad>;
-use <common.scad>;
-
-$dim = false;
+    use <common.scad>;
 
 //L: Length
 LENGTH = 45;
