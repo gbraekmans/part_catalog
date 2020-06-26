@@ -52,6 +52,9 @@ module cylinder_axial_holder(diameter, height) {
     }
     
     dim_xy_diameter(2*outer_r);
+    
+    translate([0,0,height])
+    dim_xy_diameter(diameter);
 }
 
 
