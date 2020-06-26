@@ -8,7 +8,7 @@ DIAMETER = 25;
 LENGTH = 25;
 
 //H: Height of the holder to the center of the guide
-HEIGHT_TO_CENTER = 20;
+HEIGHT_TO_CENTER = 29.5;
 
 module guide_holder(guide_diameter, length, height_to_center) {
     

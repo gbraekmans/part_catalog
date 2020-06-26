@@ -3,28 +3,26 @@ use <../../dim.scad>;
 
 use <common.scad>;
 
-// Diameter of the bore
-D = 26;
+//D: Diameter of the bore
+DIAMETER = 25;
 
-// Height of the bushing
-H = 20;
+//H: Height of the bushing
+HEIGHT = 20;
 
-// Distance to rod center
-R = 25;
+//R: Distance to rod center
+ROD_CENTER = 29.5;
 
 // Radius of the chamfer
-C = 2;
+CHAMFER = 2;
 
 // Height of the pins (0 to disable)
-P = 0;
+PIN_HEIGHT = 0;
 
 // The amount of pins
-N = 12;
+PIN_COUNT = 12;
 
 // Percentage of rod circumference covered by pins
-I = 0.5; //[0:0.01:1]
-
-function bushing_width(bore_radius, chamfer, pin_height) = 4 * (SCREW + WALL) + bore_radius*2 + 2*max(chamfer, pin_height);
+COVERAGE = 0.5; //[0:0.01:1]
 
 module curved_bushing(
     bore_radius,
@@ -39,7 +37,7 @@ module curved_bushing(
     
     assert(WALL + bore_radius + max(chamfer, pin_height) <= rod_center_delta);
     
-    width = bushing_width(bore_radius, chamfer, pin_height);
+    width = 4 * (SCREW + WALL) + bore_radius*2 + 2*max(chamfer, pin_height);
     r = bore_radius + max(chamfer, pin_height) + WALL;
     
     screw_pos_x = r + SCREW;
@@ -68,28 +66,27 @@ module curved_bushing(
             rotate([-90,0,0])
             screw(rod_center_delta + 2*EPS, rod_center_delta);
     }
+    
+    // Documentation
+    translate([0,0,height/2])
+    dim_xy_diameter(bore_radius * 2, "D");
+    
+    translate([-width/2,-rod_center_delta,0])
+    dim_z(height, "H");
+    
+    translate([0,-rod_center_delta/2,height/2])
+    dim_y(rod_center_delta, "R");
+    
+    if(len(screw_pos) <= 2)
+        translate([0,-rod_center_delta,0])
+        dim_x(screw_pos_x * 2);
+    else {
+        translate([0,-rod_center_delta, screw_pos_z])
+        dim_x(screw_pos_x * 2);
+
+        translate([-screw_pos_x,-rod_center_delta, 0])
+        dim_z(screw_pos_z * 2);      
+    }
 }
 
-rotate(180)
-curved_bushing(D/2, H, R, C, P, N, I);
-
-
-// Documentation
-
-width = bushing_width(D/2, C, P);
-top_length = D/2 + max(C,P) + WALL;
-
-translate([0,0,H/2]) {
-    dim_xy_diameter(D, "D", theta=135);
-    
-    dim_x(width, undef, top_length);
-    
-    translate([0,R/2])
-    dim_y(R, "R", width/2);
-    
-    translate([0, (R - top_length)/2])
-    dim_y(top_length + R, undef, width/2 + dim_text_line(1));
-}
-
-translate([-width/2,0])
-dim_z(H, "H");
+curved_bushing(DIAMETER/2, HEIGHT, ROD_CENTER, CHAMFER, PIN_HEIGHT, PIN_COUNT, COVERAGE);
